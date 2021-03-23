@@ -1,0 +1,15 @@
+.card img {
+  padding-top: 6rem;
+  width: 55%;
+  margin-left: 4.4rem;
+  opacity: 0.8;
+}
+.model {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 384px;
+  width: 30%;
+  margin-left: 32%;
+}

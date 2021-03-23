@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "fontGame";
+  src: url("font/Pony.ttf");
+}
+.game {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  font-family: fontGame;
+}
+.btnGame {
+  width: 200px;
+  height: 200px;
+  font-size: 60px;
+  background-color: blue;
+  border: 3px solid green;
+  color: white;
+  border-radius: 15px;
+}

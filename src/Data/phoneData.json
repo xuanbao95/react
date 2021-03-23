@@ -1,0 +1,5 @@
+[
+    { "id": 1, "tenSP": "vinsmart live", "manHinh": "AMOLED, 6.2, full HD", "heDieuHanh": "Android 9.0 (Pie)","cameraTruoc":"20 MP","cameraSau":"Chính 48 MP & phụ 8MP, 5MP","ram":"4GB","price":5700000,"img":"./img/vsphone.jpg","soLuong": 1 },
+    { "id": 2, "tenSP": "Meizu live", "manHinh": "AMOLED, HFD+ 2232 x 1080 pixels", "heDieuHanh": "Android 9.0 (Pie)","cameraTruoc":"20 MP","cameraSau":"Chính 48 MP & phụ 8MP, 5MP","ram":"4GB","price":5700000,"img":"./img/meizuphone.jpg" ,"soLuong": 1 },
+    { "id": 3, "tenSP": "Iphone xs max", "manHinh": "OLED, 6.5, 1242x2688 pixels", "heDieuHanh": "IOS 12","cameraTruoc":"20 MP","cameraSau":"Chính 48 MP & phụ 8MP, 5MP","ram":"4GB","price":5700000,"img":"./img/applephone.jpg" ,"soLuong": 1 }
+]
