@@ -11,6 +11,20 @@ class TableSinhVien extends Component {
                     <td>{item.tenSV}</td>
                     <td>{item.sdt}</td>
                     <td>{item.email}</td>
+                    <td type="button" onClick={(e) => {
+                        e.preventDefault();
+                        this.props.dispatch({
+                            type: "XOA_SV_DI",
+                            maSV: item.maSV
+                        })
+                    }}><button className="btn btn-danger">xóa</button></td>
+                    <td type="button" onClick={(e) => {
+                        e.preventDefault();
+                        this.props.dispatch({
+                            type: "SUA_SV_DI",
+                            sinhVienSua: item
+                        })
+                    }}><button className="btrn btn-primary">sửa</button></td>
                 </tr>
             )
         })
@@ -42,7 +56,7 @@ class TableSinhVien extends Component {
 
 const mapStateToProp = (state) => {
     return {
-        mangSinhVien: state.mangSinhVien.mangSinhVien
+        mangSinhVien: state.formSinhVien.mangSinhVien
     }
 }
 export default connect(mapStateToProp, null)(TableSinhVien)

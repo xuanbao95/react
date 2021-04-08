@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 class SanPhamRedux extends Component {
     render() {
-        let { arr } = this.props
+        console.log(this.props);
+        let { arr } = this.props;
         return (
 
             <div className="card text-left">
@@ -19,10 +20,11 @@ class SanPhamRedux extends Component {
 }
 
 //xây dựng hàm tạo ra props là hàm xử lý sự kiện=> đưa dử liệu lên store
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {//dispatch giống phương thức setState trong reactClass component
     //tạo hàm xử lý sự kiện đưa lên reducer
     return {
         themGioHang: (product) => {
+            //tạo ra sản phẩm giỏ hàng
             let productCart = {
                 maSP: product.maSP,
                 tenSP: product.tenSP,
@@ -32,10 +34,10 @@ const mapDispatchToProps = (dispatch) => {
             };
             //tạo action đưa dử liệu lên reducer
             let action = {
-                type: "THEM_GIO_HANG",// bắt buộc phải có type
-                productCart: productCart,
+                type: "THEM_GIO_HANG",// bắt buộc phải có type để reducer nhận biến giá trị xử lý
+                productCart: productCart,// dử liệu mới muốn gởi đi
             }
-            //tạo action xong phải truyền vào hàm dispatch để truyen duer lieuj lên store
+            //tạo action xong phải truyền vào hàm dispatch để truyen dử liệu lên store
             dispatch(action);
         }
     }

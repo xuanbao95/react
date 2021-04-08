@@ -29,6 +29,10 @@ import BaiTapThayKinh from './Components/BaiTapThayKinh/BaiTapThayKinh';
 import BaiTapGioHangRedux from './DemoRedux/BTGioHangRedux/BaiTapGioHangRedux';
 import BaiTapQuanLySInhVien from './Form_validation/BaiTapQuanLySInhVien';
 import BaiTapXiNgau from './DemoRedux/BT/DoXiNgau/BaiTapXiNgau';
+import BaiTapDatVe from './DemoRedux/BaiTapDatVe/BaiTapDatVe';
+import LacXiNgau from './Components/LacXiNgau/LacXiNgau';
+import FormReact from './Form_validation/FormReact';
+import LifeCycle from './LifeCycle/LifeCycle';
 
 
 
@@ -59,7 +63,11 @@ function App() {
       {/* <BaiTapThayKinh /> */}
       {/* <BaiTapGioHangRedux /> */}
       {/* <BaiTapQuanLySInhVien /> */}
-      <BaiTapXiNgau />
+      {/* <BaiTapXiNgau /> */}
+      {/* <BaiTapDatVe /> */}
+      {/* <LacXiNgau /> */}
+      {/* <FormReact /> */}
+      {/* <LifeCycle /> */}
     </div>
   );
 }

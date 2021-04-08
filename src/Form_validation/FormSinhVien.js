@@ -2,41 +2,83 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 class FormSinhVien extends Component {
     state = {
-        maSV: '',
-        tenSV: '',
-        email: '',
-        sdt: ''
+        value: {
+            maSV: '',
+            tenSV: '',
+            email: '',
+            sdt: ''
+        },
+        erro: {
+            maSV: '',
+            tenSV: '',
+            email: '',
+            sdt: ''
+        },
+
+
     }
-    handleChange = (e) => {
-        //lấy giá trị thay dổi bởi người dùng nhập
-        let tagInput = e.target;
-        let { name, value } = tagInput;
+    handleChangeInput = (e) => {
+        let { value, name } = e.target;
+        //tạo  value và erro mới để gán lại value và erro củ
+        let newValue = { ...this.state.value };
+        let newErro = { ...this.state.erro };
+        let erroMess = '';
+        newValue[name] = value;
+        if (newValue[name] === '') {
+            erroMess = "không bỏ trông";
+        };
+        newErro[name] = erroMess;
         this.setState({
-            [name]: value,
+            value: newValue,
+            erro: newErro
         })
     }
-    handleSubmit = (e) => {
+    handelSubmit = (e) => {
         e.preventDefault();
-        this.props.themSinhVien(this.state)
+        //kiểm tra có lấy đúng giá trị value mới bấm thêm sv đc
+        let isValid = true;
+        let { value, erro } = this.state;
+        //duyetj for cho value và erro
+        for (let key in value) {//duyệt tùng phần tử trong value
+            if (value[key] === "") {
+                isValid = false;
+            }
+        }
+        for (let key in erro) {// duyetj tưng phần tử trong erro
+            if (erro[key] != '') {
+                isValid = false
+            }
+        }
+        if (!isValid) {
+            alert('sai nội dung kìa');
+            return;
+        };
+        this.props.dispatch({
+            type: "BAM_THEM_SV_DI",
+            sinhVien: this.state.value,
+        })
     }
     render() {
+        let { maSV, tenSV, email, sdt } = this.props.sinhVienSua;
         return (
-            <div className="container">
+            <form className="container" onSubmit={this.handelSubmit}>
                 <div className="card text-left">
                     <div className="card-header"><h3>Thông Tin Sinh Viên</h3></div>
                     <div className="card-body">
-                        <form onSubmit={this.handleSubmit}>
+                        <form >
                             <div className="row">
                                 <div className="col-6">
                                     <div className="form-group">
                                         <label>Mã sinh viên</label>
-                                        <input type="number" name="maSV" className="form-control" value={this.state.maSV} onChange={this.handleChange} />
+                                        <input typeProps="maSV" name="maSV" className="form-control" onChange={this.handleChangeInput} />
+                                        <p className="text-danger">{this.state.erro.maSV}</p>
                                     </div>
                                 </div>
                                 <div className="col-6">
                                     <div className="form-group">
                                         <label>Tên sinh viên</label>
-                                        <input type="text" name="tenSV" className="form-control" value={this.state.tenSV} onChange={this.handleChange} />
+                                        <input name="tenSV" className="form-control" onChange={this.handleChangeInput} />
+                                        <p className="text-danger">{this.state.erro.tenSV}</p>
                                     </div>
                                 </div>
                             </div>
@@ -44,37 +86,33 @@ class FormSinhVien extends Component {
                                 <div className="col-6">
                                     <div className="form-group">
                                         <label>Email sinh viên</label>
-                                        <input type="email" name="email" className="form-control" value={this.state.email} onChange={this.handleChange} />
+                                        <input typeProps="email" name="email" className="form-control" onChange={this.handleChangeInput} />
+                                        <p className="text-danger">{this.state.erro.email}</p>
                                     </div>
                                 </div>
                                 <div className="col-6">
                                     <div className="form-group">
                                         <label>SĐT sinh viên</label>
-                                        <input type="number" name="sdt" className="form-control" value={this.state.sdt} onChange={this.handleChange} />
+                                        <input typeProps="sdt" name="sdt" className="form-control" onChange={this.handleChangeInput} />
+                                        <p className="text-danger">{this.state.erro.sdt}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <button type="submit" className="btn btn-success">Thêm Sinh Viên</button>
+                                <button type="submit" className="btn btn-success" onClick={this.handelSubmit}> Thêm Sinh Viên</button>
                             </div>
                         </form>
                     </div>
                 </div>
 
-            </div>
+            </form>
         )
     }
 }
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        themSinhVien: (sinhVien) => {
-            let action = {
-                type: "THEM_SINH_VIEN",
-                sinhVien
-            }
-            dispatch(action)
-        }
+        sinhVienSua: state.FormSinhVien.sinhVienSua,
     }
 }
-export default connect(null, mapDispatchToProps)(FormSinhVien)
+export default connect(mapStateToProps)(FormSinhVien)

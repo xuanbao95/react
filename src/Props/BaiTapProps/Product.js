@@ -179,14 +179,14 @@ export default class Product extends Component {
         let index = tangGiam.find(sp => sp.maSP === maSP)
         if (index) {
             index.soLuong += soLuong;
-            if (index.soLuong === 0) {
-                tangGiam.splice(index, 1)
-            }
+            // if (index.soLuong === 0) {
+            //     tangGiam.splice(index, 1)
+            // }
         }
-        // if (index.soLuong < 1) {
-        //     alert("số lượng tối thiểu là 1");
-        //     index.soLuong -= soLuong;
-        // }
+        if (index.soLuong < 1) {
+            alert("số lượng tối thiểu là 1");
+            index.soLuong -= soLuong;
+        }
 
         this.setState({
             gioHang: tangGiam

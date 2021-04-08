@@ -16,7 +16,7 @@ class GioHangRedux extends Component {
                         {product.soLuong}
                         <button onClick={() => this.props.tangGiamSL(index, 1)}>+</button>
                     </td>
-                    <td>{product.soLuong * product.giaBan}</td>
+                    <td>{(product.soLuong * product.giaBan).toLocaleString()}</td>
                     <td><button onClick={() => this.props.xoaGioHang(index)} className="btn btn-danger">xóa</button></td>
                     <td><button onClick={() => this.props.xoaGioHangMaSP(product.maSP)} className="btn btn-danger">xóa</button></td>
                 </tr>
